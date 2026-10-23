@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+V3.1<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -410,6 +410,8 @@
             border: 1px solid rgba(0,255,135,0.2); 
             margin: 0 auto 8px auto; 
         }
+.edit-btn { background: var(--pl-cyan, #00d7ff); color: #1c0028; border: none; padding: 5px 8px; border-radius: 5px; cursor: pointer; font-size: 10px; font-weight: 700; }
+.edit-btn:hover { opacity: 0.9; }
 
         .admin-modal-card h3 { margin: 0 0 4px 0; font-size: 15px; color: var(--text-main); font-weight: 800; }
         .admin-modal-card p { margin: 0 0 12px 0; font-size: 11px; color: var(--text-muted); }
@@ -831,43 +833,7 @@
         ];
 
         const defaultRealPlayers = [
-            { name: "Bukayo Saka", team: "Arsenal", goals: 0 },
-            { name: "Kai Havertz", team: "Arsenal", goals: 0 },
-            { name: "Martin Ødegaard", team: "Arsenal", goals: 0 },
-            { name: "Gabriel Martinelli", team: "Arsenal", goals: 0 },
-            { name: "Ollie Watkins", team: "Aston Villa", goals: 0 },
-            { name: "Leon Bailey", team: "Aston Villa", goals: 0 },
-            { name: "Antoine Semenyo", team: "Bournemouth", goals: 0 },
-            { name: "Bryan Mbeumo", team: "Brentford", goals: 0 },
-            { name: "Kaoru Mitoma", team: "Brighton", goals: 0 },
-            { name: "João Pedro", team: "Brighton", goals: 0 },
-            { name: "Cole Palmer", team: "Chelsea", goals: 0 },
-            { name: "Nicolas Jackson", team: "Chelsea", goals: 0 },
-            { name: "Noni Madueke", team: "Chelsea", goals: 0 },
-            { name: "Haji Wright", team: "Coventry City", goals: 0 },
-            { name: "Jean-Philippe Mateta", team: "Crystal Palace", goals: 0 },
-            { name: "Eberechi Eze", team: "Crystal Palace", goals: 0 },
-            { name: "Dominic Calvert-Lewin", team: "Everton", goals: 0 },
-            { name: "Rodrigo Muniz", team: "Fulham", goals: 0 },
-            { name: "Kasey Palmer", team: "Hull City", goals: 0 },
-            { name: "Liam Delap", team: "Ipswich Town", goals: 0 },
-            { name: "Joel Piroe", team: "Leeds United", goals: 0 },
-            { name: "Mohamed Salah", team: "Liverpool", goals: 0 },
-            { name: "Darwin Núñez", team: "Liverpool", goals: 0 },
-            { name: "Luis Díaz", team: "Liverpool", goals: 0 },
-            { name: "Erling Haaland", team: "Man City", goals: 0 },
-            { name: "Phil Foden", team: "Man City", goals: 0 },
-            { name: "Kevin De Bruyne", team: "Man City", goals: 0 },
-            { name: "Bruno Fernandes", team: "Man United", goals: 0 },
-            { name: "Marcus Rashford", team: "Man United", goals: 0 },
-            { name: "Rasmus Højlund", team: "Man United", goals: 0 },
-            { name: "Alexander Isak", team: "Newcastle", goals: 0 },
-            { name: "Anthony Gordon", team: "Newcastle", goals: 0 },
-            { name: "Chris Wood", team: "Nottingham Forest", goals: 0 },
-            { name: "Wilson Isidor", team: "Sunderland", goals: 0 },
-            { name: "Son Heung-min", team: "Tottenham", goals: 0 },
-            { name: "Dominic Solanke", team: "Tottenham", goals: 0 }
-        ];
+              ];
 
         const realTeamPowerIndex = {
             "Arsenal": 92, "Man City": 94, "Liverpool": 91, "Chelsea": 85,
@@ -1476,7 +1442,7 @@
             });
         }
 
-        async function addPlayerFromScorersTab() {
+       /* async function addPlayerFromScorersTab() {
             let name = document.getElementById('scorer-tab-player-name').value.trim();
             let team = document.getElementById('scorer-tab-team-select').value;
             let goals = parseInt(document.getElementById('scorer-tab-player-goals').value) || 0;
@@ -1493,32 +1459,105 @@
             renderScorers();
             document.getElementById('scorer-tab-player-name').value = '';
             alert("Player added!");
+        } */
+
+                       async function updateScorers() {
+    const inputs = document.querySelectorAll('.scorer-input');
+    let updates = [];
+    
+    inputs.forEach(input => {
+        let idx = input.getAttribute('data-index');
+        let goals = parseInt(input.value) || 0;
+        if (scorers[idx]) {
+            scorers[idx].goals = goals;
+            updates.push(scorers[idx]);
         }
+    });
 
-        async function updateScorers() {
-            const inputs = document.querySelectorAll('.scorer-input');
-            let updates = [];
-            
-            inputs.forEach(input => {
-                let idx = input.getAttribute('data-index');
-                let goals = parseInt(input.value) || 0;
-                if (scorers[idx]) {
-                    scorers[idx].goals = goals;
-                    updates.push(scorers[idx]);
-                }
-            });
+    scorers.sort((a, b) => b.goals - a.goals);
+    renderScorers();
 
-            scorers.sort((a, b) => b.goals - a.goals);
-            renderScorers();
-            alert("Scorers updated!");
+    if (db) {
+        try {
+            // Bütün oyunçuların güncəlləmə sorğularını tək-tək gözləmədən, 
+            // eyni anda paralel şəkildə Supabase-ə göndəririk:
+            const updatePromises = updates.map(player => 
+                db.from('scorers')
+                  .update({ goals: player.goals })
+                  .eq('name', player.name)
+                  .eq('team', player.team)
+            );
+
+            await Promise.all(updatePromises);
+            alert("Qollar Supabase bazasında dərhal yeniləndi!");
+        } catch (err) {
+            console.warn("Xəta baş verdi:", err);
+        }
+    } else {
+        alert("Scorers updated!");
+    }
+}
+
+async function addPlayerFromScorersTab() {
+    let name = document.getElementById('scorer-tab-player-name').value.trim();
+    let team = document.getElementById('scorer-tab-team-select').value;
+    let goals = parseInt(document.getElementById('scorer-tab-player-goals').value) || 0;
+
+    if (!name) return alert("Please enter player name!");
+
+    if (db) {
+        // .select() əlavə edirik ki, Supabase bazanın avtomatik yaratdığı ID-ni bizə qaytarsın
+        let { data, error } = await db.from('scorers').insert([{ name, team, goals }]).select();
+        
+        if (error) {
+            console.warn("Supabase insert error:", error);
+            scorers.push({ name, team, goals }); // Xəta olarsa yenə də lokal əlavə edirik
+        } else if (data && data.length > 0) {
+            // Bazadan qayıdan ID-li obyekti dərhal əlavə edirik
+            scorers.push(data[0]);
+        }
+    } else {
+        scorers.push({ id: Date.now(), name, team, goals });
+    }
+
+    renderScorers();
+    document.getElementById('scorer-tab-player-name').value = '';
+    alert("Player added!");
+}
+
+                /* async function addPlayerFromScorersTab() {
+            let name = document.getElementById('scorer-tab-player-name').value.trim();
+            let team = document.getElementById('scorer-tab-team-select').value;
+            let goals = parseInt(document.getElementById('scorer-tab-player-goals').value) || 0;
+
+            if (!name) return alert("Please enter player name!");
+
+            // Əvvəlcə lokal siyahıya əlavə edirik ki, dərhal ekranda görünsün
+            scorers.push({ name, team, goals });
 
             if (db) {
-                Promise.all(updates.map(player => {
-                    if (player.id) {
-                        return db.from('scorers').update({ goals: player.goals }).eq('id', player.id);
-                    }
-                })).catch(err => console.warn("Bombardir bazası xətası:", err));
+                let { error } = await db.from('scorers').insert([{ name, team, goals }]);
+                if (error) {
+                    console.warn("Supabase insert error:", error);
+                }
             }
+
+            renderScorers();
+            document.getElementById('scorer-tab-player-name').value = '';
+            alert("Player added!");
+        }*/
+
+        async function removePlayerFromPool(idx) {
+            let player = scorers[idx];
+            if (db && player) {
+                if (player.id) {
+                    await db.from('scorers').delete().eq('id', player.id);
+                } else {
+                    await db.from('scorers').delete().eq('name', player.name).eq('team', player.team);
+                }
+            }
+            scorers.splice(idx, 1);
+            renderAdminPool();
         }
 
         function renderAdmin() {
@@ -1542,8 +1581,142 @@
             initAdminMatchdaySelect();
             renderAdminMatches();
         }
+function renderAdminPool() {
+    const select = document.getElementById('admin-filter-team-select');
+    const poolBody = document.getElementById('admin-pool-body');
+    if (!select || !poolBody) return;
 
-        function renderAdminPool() {
+    let selectedTeam = select.value || (teams[0] ? teams[0].name : "");
+    poolBody.innerHTML = '';
+
+    let filteredPlayers = scorers.filter(p => p.team === selectedTeam);
+
+    filteredPlayers.forEach((player) => {
+        let globalIdx = scorers.findIndex(p => p.name === player.name && p.team === player.team);
+        
+        poolBody.innerHTML += `
+            <tr>
+                <td style="text-align:left; font-weight:700;">${player.name} <span style="color:var(--text-muted); font-size:9px;">(Goals: ${player.goals})</span></td>
+                <td style="text-align:right;">
+                    <button class="edit-btn" onclick="editPlayerPrompt(${globalIdx})" style="margin-right: 4px;">Edit</button>
+                    <button class="danger-btn" onclick="removePlayerFromPool(${globalIdx})">Delete</button>
+                </td>
+            </tr>
+        `;
+    });
+}
+
+
+function editPlayerPrompt(idx) {
+    let player = scorers[idx];
+    if (!player) return alert("Oyunçu tapılmadı!");
+
+    let existingModal = document.getElementById('custom-edit-modal');
+    if (existingModal) existingModal.remove();
+
+    let teamOptions = teams.map(t => {
+        let teamName = typeof t === 'string' ? t : (t.name || t);
+        let selected = teamName === player.team ? 'selected' : '';
+        return `<option value="${teamName}" ${selected}>${teamName}</option>`;
+    }).join('');
+
+    let modal = document.createElement('div');
+    modal.id = 'custom-edit-modal';
+    modal.style.cssText = `
+        position: fixed; inset: 0; background: rgba(15, 0, 23, 0.85);
+        display: flex; align-items: center; justify-content: center;
+        z-index: 9999; backdrop-filter: blur(8px); padding: 12px;
+    `;
+
+    modal.innerHTML = `
+        <div style="background: var(--pl-card-solid, #2d0033); border: 1px solid var(--border, rgba(255, 255, 255, 0.12)); border-radius: 14px; width: 100%; max-width: 320px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); overflow: hidden; font-family: 'Plus Jakarta Sans', sans-serif;">
+            
+            <div style="padding: 10px 14px; background: rgba(0,0,0,0.3); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border, rgba(255, 255, 255, 0.12));">
+                <h3 style="margin: 0; font-size: 13px; color: var(--pl-green, #00ff87); font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;"><i class="fa-solid fa-user-pen"></i> Edit Player</h3>
+                <button type="button" id="modal-close-icon" style="background: none; border: none; color: var(--text-muted, #bdaccd); font-size: 16px; cursor: pointer;"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div style="padding: 14px 16px;">
+                <div style="margin-bottom: 12px;">
+                    <label style="display: block; font-size: 10px; color: var(--text-muted, #bdaccd); margin-bottom: 4px; font-weight: 800; text-transform: uppercase;">Player Name</label>
+                    <input type="text" id="modal-edit-name" value="${player.name}" style="width: 100%; padding: 8px 10px; background: rgba(0,0,0,0.3); border: 1px solid var(--border, rgba(255, 255, 255, 0.12)); border-radius: 8px; color: var(--text-main, #ffffff); font-size: 12px; outline: none; font-weight: 700;">
+                </div>
+                
+                <div style="margin-bottom: 16px;">
+                    <label style="display: block; font-size: 10px; color: var(--text-muted, #bdaccd); margin-bottom: 4px; font-weight: 800; text-transform: uppercase;">Team</label>
+                    <select id="modal-edit-team" style="width: 100%;">
+                        ${teamOptions}
+                    </select>
+                </div>
+                
+                <div style="display: flex; gap: 6px;">
+                    <button type="button" id="modal-cancel-btn" style="flex: 1; padding: 8px; border-radius: 6px; font-weight: 800; font-size: 11px; cursor: pointer; border: none; background: rgba(255,255,255,0.08); color: var(--text-muted, #bdaccd); text-transform: uppercase;">Cancel</button>
+                    <button type="button" id="modal-save-btn" style="flex: 1; padding: 8px; border-radius: 6px; font-weight: 800; font-size: 11px; cursor: pointer; border: none; background: linear-gradient(135deg, var(--pl-green, #00ff87) 0%, var(--pl-cyan, #00d7ff) 100%); color: #1c0028; text-transform: uppercase; box-shadow: 0 4px 12px rgba(0, 255, 135, 0.2);">Save</button>
+                </div>
+            </div>
+            
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    document.getElementById('modal-edit-name').focus();
+
+    const closeModal = () => modal.remove();
+    document.getElementById('modal-cancel-btn').onclick = closeModal;
+    document.getElementById('modal-close-icon').onclick = closeModal;
+    
+    modal.onclick = (e) => {
+        if (e.target === modal) closeModal();
+    };
+
+    document.getElementById('modal-save-btn').onclick = () => {
+        let newName = document.getElementById('modal-edit-name').value.trim();
+        let newTeam = document.getElementById('modal-edit-team').value;
+
+        if (!newName) {
+            alert("Please enter player name!");
+            return;
+        }
+
+        modal.remove();
+        updatePlayerInPool(idx, newName, newTeam);
+    };
+}
+
+
+
+async function updatePlayerInPool(idx, newName, newTeam) {
+    let oldPlayer = scorers[idx];
+    if (!oldPlayer) return;
+
+    let oldName = oldPlayer.name;
+    let oldTeam = oldPlayer.team;
+
+    // Lokal massivi yeniləyirik
+    scorers[idx].name = newName;
+    scorers[idx].team = newTeam;
+
+    // Supabase-də köhnə ad və komandaya əsasən yeniləyirik
+    if (db) {
+        let { error } = await db.from('scorers')
+            .update({ name: newName, team: newTeam })
+            .eq('name', oldName)
+            .eq('team', oldTeam);
+
+        if (error) {
+            console.warn("Supabase update error:", error);
+            alert("Yenilənmə xətası: " + error.message);
+            return;
+        }
+    }
+
+    renderAdminPool();
+    renderScorers();
+    alert("Oyunçu uğurla yeniləndi!");
+}
+
+        /*function renderAdminPool() {
             const select = document.getElementById('admin-filter-team-select');
             const poolBody = document.getElementById('admin-pool-body');
             if (!select || !poolBody) return;
@@ -1562,7 +1735,7 @@
                     </tr>
                 `;
             });
-        }
+        }*/
 
         async function addPlayerToPool() {
             let select = document.getElementById('admin-filter-team-select');
@@ -1584,12 +1757,12 @@
             alert(`Player added to ${team}!`);
         }
 
-        async function removePlayerFromPool(idx) {
+        /*async function removePlayerFromPool(idx) {
             let player = scorers[idx];
             if (db && player && player.id) await db.from('scorers').delete().eq('id', player.id);
             scorers.splice(idx, 1);
             renderAdminPool();
-        }
+        }*/
 
         async function removeTeam(id) {
             if (db) await db.from('teams').delete().eq('id', id);
