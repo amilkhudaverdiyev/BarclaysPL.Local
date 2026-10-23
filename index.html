@@ -1,4 +1,4 @@
-V3.1<!DOCTYPE html>
+V4.0<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -69,13 +69,12 @@ V3.1<!DOCTYPE html>
         }
 
         .pl-header-logo {
-    height: 32px;
-    max-width: 100%;
-    object-fit: contain;
-    mix-blend-mode: screen; /* Şəklin tünd fonunu yox edib tətbiqin fonuna uyğunlaşdırır */
-    background: transparent;
-}
-
+            height: 32px;
+            max-width: 100%;
+            object-fit: contain;
+            mix-blend-mode: screen;
+            background: transparent;
+        }
 
         /* NAV TABS */
         .nav-tabs { 
@@ -204,7 +203,7 @@ V3.1<!DOCTYPE html>
             box-shadow: var(--shadow);
         }
 
-        /* YIĞCAM FIXTURES DİZAYNI */
+        /* FIXTURES & HEADERS */
         .matchday-header { 
             display: flex; 
             justify-content: space-between; 
@@ -214,18 +213,6 @@ V3.1<!DOCTYPE html>
             padding: 6px 10px; 
             border-radius: 8px; 
             border: 1px solid var(--border); 
-        }
-
-        .matchday-header select { 
-            background: var(--pl-bg); 
-            color: var(--text-main); 
-            border: 1px solid var(--border); 
-            padding: 4px 8px; 
-            border-radius: 6px; 
-            font-weight: 700; 
-            font-size: 11px; 
-            cursor: pointer; 
-            outline: none; 
         }
 
         .match-grid { display: grid; gap: 4px; }
@@ -259,8 +246,7 @@ V3.1<!DOCTYPE html>
             display: flex; 
             align-items: center; 
             gap: 2px; 
-            background: #21002b; /* Və ya sadəcə yellow */
- 
+            background: #21002b; 
             padding: 2px 4px; 
             border-radius: 6px; 
             border: 1px solid var(--border); 
@@ -291,7 +277,7 @@ V3.1<!DOCTYPE html>
             text-transform: uppercase; 
         }
 
-        .form-group input, .form-group select { 
+        .form-group input { 
             width: 100%; 
             padding: 8px 10px; 
             background: rgba(0,0,0,0.3); 
@@ -302,7 +288,7 @@ V3.1<!DOCTYPE html>
             outline: none; 
         }
 
-        .form-group input:focus, .form-group select:focus { border-color: var(--pl-green); }
+        .form-group input:focus { border-color: var(--pl-green); }
 
         .primary-btn { 
             background: linear-gradient(135deg, var(--pl-green) 0%, var(--pl-cyan) 100%); 
@@ -410,8 +396,9 @@ V3.1<!DOCTYPE html>
             border: 1px solid rgba(0,255,135,0.2); 
             margin: 0 auto 8px auto; 
         }
-.edit-btn { background: var(--pl-cyan, #00d7ff); color: #1c0028; border: none; padding: 5px 8px; border-radius: 5px; cursor: pointer; font-size: 10px; font-weight: 700; }
-.edit-btn:hover { opacity: 0.9; }
+
+        .edit-btn { background: var(--pl-cyan, #00d7ff); color: #1c0028; border: none; padding: 5px 8px; border-radius: 5px; cursor: pointer; font-size: 10px; font-weight: 700; }
+        .edit-btn:hover { opacity: 0.9; }
 
         .admin-modal-card h3 { margin: 0 0 4px 0; font-size: 15px; color: var(--text-main); font-weight: 800; }
         .admin-modal-card p { margin: 0 0 12px 0; font-size: 11px; color: var(--text-muted); }
@@ -448,7 +435,8 @@ V3.1<!DOCTYPE html>
 
         .btn-cancel { background: rgba(255,255,255,0.08); color: var(--text-muted); }
         .btn-submit { background: linear-gradient(135deg, var(--pl-green) 0%, var(--pl-cyan) 100%); color: #1c0028; }
-.season-badge-right {
+
+        .season-badge-right {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -472,8 +460,9 @@ V3.1<!DOCTYPE html>
             letter-spacing: 0.5px;
             text-shadow: 0 0 8px rgba(0, 255, 135, 0.4);
         }
+
         /* SPLASH SCREEN */
-      #splash-screen {
+        #splash-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background-color: var(--pl-bg);
@@ -484,52 +473,20 @@ V3.1<!DOCTYPE html>
             z-index: 9999;
             transition: opacity 0.5s ease;
         }
+
         .splash-logo {
             width: 220px;
             max-width: 80%;
             object-fit: contain;
             background: transparent;
-            
             animation: pulseLogo 1.5s infinite alternate;
-        }
-        /* Bütün Combobox / Select Menyularının Müasir Dizaynı */
-        select {
-            appearance: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            background-color: #21002b !important;
-            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2300ff87%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E") !important;
-            background-repeat: no-repeat !important;
-            background-position: right 10px center !important;
-            background-size: 9px auto !important;
-            color: #ffffff !important;
-            border: 1px solid #48115c !important;
-            border-radius: 10px !important;
-            padding: 6px 28px 6px 12px !important;
-            font-weight: 800 !important;
-            font-size: 11px !important;
-            outline: none !important;
-            cursor: pointer !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
-            transition: all 0.2s ease-in-out !important;
-        }
-
-        select:focus {
-            border-color: var(--pl-green) !important;
-            box-shadow: 0 0 10px rgba(0, 255, 135, 0.3) !important;
-        }
-
-        select option {
-            background-color: #1f0028 !important;
-            color: #ffffff !important;
-            padding: 8px !important;
-            font-weight: 700 !important;
         }
 
         @keyframes pulseLogo {
             0% { transform: scale(0.95); opacity: 0.8; }
             100% { transform: scale(1.05); opacity: 1; }
         }
+
         .loader-spinner {
             width: 35px;
             height: 35px;
@@ -539,11 +496,14 @@ V3.1<!DOCTYPE html>
             animation: spinLoader 0.8s linear infinite;
             margin-top: 25px;
         }
+
         @keyframes spinLoader {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-            .custom-dropdown-item {
+
+        /* CUSTOM DROPDOWN SYSTEM */
+        .custom-dropdown-item {
             padding: 10px 14px;
             margin-bottom: 4px;
             background: rgba(0, 0, 0, 0.25);
@@ -570,38 +530,46 @@ V3.1<!DOCTYPE html>
             color: #ffffff !important;
             border: 1px solid #48115c !important;
             border-radius: 10px;
-            padding: 6px 12px;
+            padding: 8px 12px;
             font-size: 11px;
             font-weight: 800;
             cursor: pointer;
-            display: inline-flex;
+            display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 8px;
+            width: 100%;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         }
 
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(10px); }
+        }
     </style>
 </head>
 <body>
     <div id="splash-screen">
-        <img src="file:///storage/emulated/0/Download/pl.jpg" class="splash-logo" alt="Premier League">
+        <img src="https://raw.githubusercontent.com/amilkhudaverdiyev/BarclaysPL.Local/main/pl.jpg" class="splash-logo" alt="Premier League">
         <div class="loader-spinner"></div>
-      </div>
+    </div>
 
-            <!-- HEADER -->
-              <!-- HEADER -->
+    <div class="container">
+        <!-- HEADER -->
         <div class="app-header">
             <div class="app-logo">
-                <img src="file:///storage/emulated/0/Download/pl.jpg" class="pl-header-logo" alt="Premier League">
+                <img src="https://raw.githubusercontent.com/amilkhudaverdiyev/BarclaysPL.Local/main/pl.jpg" class="pl-header-logo" alt="Premier League">
             </div>
             <div class="season-badge-right">
                 <span class="season-text">SEASON</span>
                 <span class="season-num">27</span>
             </div>
         </div>
-
-
 
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab('standings', this)"><i class="fa-solid fa-list-ol"></i> Standings</button>
@@ -639,16 +607,13 @@ V3.1<!DOCTYPE html>
         <div id="matches-section" class="section">
             <div class="card">
                <div class="matchday-header">
-    <span style="font-weight: 800; font-size: 12px; color: var(--pl-green);"><i class="fa-regular fa-clock"></i> Select Gameweek</span>
-    
-    <!-- Ağ pəncərənin açılmaması üçün gizli select və xüsusi görünən düymə -->
-    <select id="matchday-select" onchange="changeMatchday()" style="display: none;"></select>
-    <button type="button" id="matchday-select-btn" class="custom-select-btn" onclick="openCustomDropdown('matchday-select', 'Select Gameweek', changeMatchday)">
-        <span id="matchday-select-label">Gameweek 1</span>
-        <i class="fa-solid fa-chevron-down" style="color: var(--pl-green); font-size: 10px;"></i>
-    </button>
-</div>
-
+                    <span style="font-weight: 800; font-size: 12px; color: var(--pl-green);"><i class="fa-regular fa-clock"></i> Select Gameweek</span>
+                    <select id="matchday-select" onchange="changeMatchday()" style="display: none;"></select>
+                    <button type="button" id="matchday-select-btn" class="custom-select-btn" style="width: auto;" onclick="openCustomDropdown('matchday-select', 'Select Gameweek', changeMatchday)">
+                        <span id="matchday-select-label">Gameweek 1</span>
+                        <i class="fa-solid fa-chevron-down" style="color: var(--pl-green); font-size: 10px;"></i>
+                    </button>
+                </div>
                 <div id="match-list-container" class="match-grid"></div>
                 <button class="primary-btn" onclick="updateTournament()"><i class="fa-solid fa-floppy-disk"></i> Save Results & Update Table</button>
             </div>
@@ -664,7 +629,11 @@ V3.1<!DOCTYPE html>
                 </div>
                 <div class="form-group">
                     <label>Select Team</label>
-                    <select id="scorer-tab-team-select"></select>
+                    <select id="scorer-tab-team-select" style="display: none;"></select>
+                    <button type="button" id="scorer-tab-team-select-btn" class="custom-select-btn" onclick="openCustomDropdown('scorer-tab-team-select', 'Select Team')">
+                        <span id="scorer-tab-team-select-label">Select Team</span>
+                        <i class="fa-solid fa-chevron-down" style="color: var(--pl-green); font-size: 10px;"></i>
+                    </button>
                 </div>
                 <div class="form-group">
                     <label>Initial Goals</label>
@@ -676,10 +645,14 @@ V3.1<!DOCTYPE html>
             <div class="card">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                     <h3 style="margin:0; font-size: 13px; color: var(--pl-green);"><i class="fa-solid fa-ranking-star"></i> Top Scorers List</h3>
-                    <div style="width: 140px;">
-                        <select id="scorers-filter-select" onchange="renderScorers()" style="background:rgba(0,0,0,0.3); color:var(--text-main); border:1px solid var(--border); padding:4px 6px; border-radius:6px; font-weight:700; font-size:10px; cursor:pointer; width:100%; outline:none;">
+                    <div style="width: 150px;">
+                        <select id="scorers-filter-select" onchange="renderScorers()" style="display: none;">
                             <option value="ALL">All Teams</option>
                         </select>
+                        <button type="button" id="scorers-filter-select-btn" class="custom-select-btn" onclick="openCustomDropdown('scorers-filter-select', 'Filter Team', renderScorers)">
+                            <span id="scorers-filter-select-label">All Teams</span>
+                            <i class="fa-solid fa-chevron-down" style="color: var(--pl-green); font-size: 10px;"></i>
+                        </button>
                     </div>
                 </div>
 
@@ -722,7 +695,11 @@ V3.1<!DOCTYPE html>
                 <h3 style="margin-top:0; font-size: 13px; color: var(--pl-green);"><i class="fa-solid fa-users"></i> Team Players Pool</h3>
                 <div class="form-group">
                     <label>Filter / Select Team</label>
-                    <select id="admin-filter-team-select" onchange="renderAdminPool()"></select>
+                    <select id="admin-filter-team-select" onchange="renderAdminPool()" style="display: none;"></select>
+                    <button type="button" id="admin-filter-team-select-btn" class="custom-select-btn" onclick="openCustomDropdown('admin-filter-team-select', 'Select Team', renderAdminPool)">
+                        <span id="admin-filter-team-select-label">Select Team</span>
+                        <i class="fa-solid fa-chevron-down" style="color: var(--pl-green); font-size: 10px;"></i>
+                    </button>
                 </div>
 
                 <div class="form-group">
@@ -748,7 +725,11 @@ V3.1<!DOCTYPE html>
                 <h3 style="margin-top:0; font-size: 13px; color: var(--pl-green);"><i class="fa-solid fa-sliders"></i> Match Results Management</h3>
                 <div class="form-group">
                     <label>Select Gameweek</label>
-                    <select id="admin-matchday-select" onchange="renderAdminMatches()"></select>
+                    <select id="admin-matchday-select" onchange="renderAdminMatches()" style="display: none;"></select>
+                    <button type="button" id="admin-matchday-select-btn" class="custom-select-btn" onclick="openCustomDropdown('admin-matchday-select', 'Select Gameweek', renderAdminMatches)">
+                        <span id="admin-matchday-select-label">Gameweek 1</span>
+                        <i class="fa-solid fa-chevron-down" style="color: var(--pl-green); font-size: 10px;"></i>
+                    </button>
                 </div>
                 <div style="max-height: 200px; overflow-y: auto; margin-top: 10px;" id="admin-matches-container"></div>
                 
@@ -789,6 +770,7 @@ V3.1<!DOCTYPE html>
             </div>
         </div>
     </div>
+
     <!-- CUSTOM DROPDOWN MODAL -->
     <div id="custom-dropdown-modal" class="modal-overlay">
         <div class="modal-card" style="max-width: 300px;">
@@ -832,8 +814,7 @@ V3.1<!DOCTYPE html>
             { name: "Tottenham", logo: "https://resources.premierleague.com/premierleague/badges/70/t6.png" }
         ];
 
-        const defaultRealPlayers = [
-              ];
+        const defaultRealPlayers = [];
 
         const realTeamPowerIndex = {
             "Arsenal": 92, "Man City": 94, "Liverpool": 91, "Chelsea": 85,
@@ -901,6 +882,7 @@ V3.1<!DOCTYPE html>
                         else roundMatches.push({ home: home, away: away, gh: "", ga: "" });
                     }
                 }
+                roundMatches.sort(() => Math.random() - 0.5);
                 firstLeg.push(roundMatches);
                 t.splice(1, 0, t.pop());
             }
@@ -909,7 +891,11 @@ V3.1<!DOCTYPE html>
                 round.map(match => ({ home: match.away, away: match.home, gh: "", ga: "" }))
             );
 
+            secondLeg.forEach(round => round.sort(() => Math.random() - 0.5));
+
             let allRounds = [...firstLeg, ...secondLeg];
+            allRounds.forEach(round => round.sort(() => Math.random() - 0.5));
+
             let insertData = [];
 
             allRounds.forEach((roundMatches, roundIdx) => {
@@ -929,10 +915,11 @@ V3.1<!DOCTYPE html>
                 await db.from('schedule').insert(insertData);
             }
 
-            if (showAlert) alert("Tam 38 turluq cədvəl bazaya yazıldı!");
+            if (showAlert) showToast("Tam 38 turluq cədvəl bazaya yazıldı!", "success");
             await loadData();
         }
-               let activeSelectTargetId = null;
+
+        let activeSelectTargetId = null;
         let onSelectCallback = null;
 
         function openCustomDropdown(selectId, title, onChangeFn) {
@@ -955,8 +942,6 @@ V3.1<!DOCTYPE html>
                 `;
                 item.onclick = () => {
                     selectEl.value = opt.value;
-                    
-                    // Görünən düymənin üzərindəki yazını yeniləyirik
                     const labelBtn = document.getElementById(selectId + '-label');
                     if (labelBtn) {
                         labelBtn.textContent = opt.textContent;
@@ -976,7 +961,6 @@ V3.1<!DOCTYPE html>
         function closeCustomDropdown() {
             document.getElementById('custom-dropdown-modal').style.display = 'none';
         }
-
 
         async function fillRemaining38Schedule(existingData) {
             let existingGws = Math.max(...existingData.map(m => m.gameweek));
@@ -1113,7 +1097,12 @@ V3.1<!DOCTYPE html>
                 opt.textContent = `Gameweek ${i + 1}`;
                 select.appendChild(opt);
             }
+            const labelBtn = document.getElementById('matchday-select-label');
+            if (labelBtn && select.options.length > 0) {
+                labelBtn.textContent = select.options[select.selectedIndex]?.text || "Gameweek 1";
+            }
         }
+
         function renderMatches() {
             const select = document.getElementById('matchday-select');
             if (!select) return;
@@ -1128,16 +1117,15 @@ V3.1<!DOCTYPE html>
                 return;
             }
 
+            if (!schedule[roundIndex]._shuffled) {
+                schedule[roundIndex].sort(() => Math.random() - 0.5);
+                schedule[roundIndex]._shuffled = true;
+            }
+
             schedule[roundIndex].forEach((match, matchIndex) => {
                 let ghVal = (match.gh !== null && match.gh !== undefined && match.gh !== "null") ? match.gh : "";
                 let gaVal = (match.ga !== null && match.ga !== undefined && match.ga !== "null") ? match.ga : "";
 
-                // Əgər nəticə əvvəlcədən bazadan yazılaq qeydə alınıbsa - ağ və kilidli (readonly) olur
-                // Əgər hələ boşdursa - yazılarkən yaşıl rəngdə olur
-                let isSaved = (ghVal !== "" && gaVal !== "" && match.id); // Və ya qeydə alınmış statusu
-                
-                // Sadə yoxlama: Əgər dəyər varsa və artıq yadda saxlanılıbsa ağ, yeni yazılarkən yaşıl
-                let inputStyle = (ghVal !== "") ? 'color: #ffffff;' : 'color: var(--pl-green);';
                 let disabledAttr = (ghVal !== "" && gaVal !== "") ? `readonly disabled style="color: #ffffff; opacity: 0.85; cursor: not-allowed;"` : `style="color: var(--pl-green);"`;
 
                 const div = document.createElement('div');
@@ -1161,45 +1149,6 @@ V3.1<!DOCTYPE html>
             });
         }
 
-        /*function renderMatches() {
-            const select = document.getElementById('matchday-select');
-            if (!select) return;
-            if (select.children.length === 0) initMatchdaySelect();
-
-            const roundIndex = parseInt(select.value) || 0;
-            const container = document.getElementById('match-list-container');
-            container.innerHTML = '';
-
-            if (!schedule[roundIndex] || schedule[roundIndex].length === 0) {
-                container.innerHTML = '<p style="text-align:center; color:var(--text-muted); padding:10px;">Bu tur üçün məlumat tapılmadı.</p>';
-                return;
-            }
-
-            schedule[roundIndex].forEach((match, matchIndex) => {
-                let ghVal = (match.gh !== null && match.gh !== undefined && match.gh !== "null") ? match.gh : "";
-                let gaVal = (match.ga !== null && match.ga !== undefined && match.ga !== "null") ? match.ga : "";
-
-                const div = document.createElement('div');
-                div.className = 'match-item';
-                div.innerHTML = `
-                    <div class="match-team home">
-                        <span>${match.home}</span>
-                        <img src="${getTeamLogo(match.home)}" class="team-logo-img" alt="">
-                    </div>
-                    <div class="match-inputs">
-                        <input type="number" min="0" value="${ghVal}" data-round="${roundIndex}" data-match="${matchIndex}" data-type="gh">
-                        <span style="color:var(--text-muted); font-size:10px;">-</span>
-                        <input type="number" min="0" value="${gaVal}" data-round="${roundIndex}" data-match="${matchIndex}" data-type="ga">
-                    </div>
-                    <div class="match-team away">
-                        <img src="${getTeamLogo(match.away)}" class="team-logo-img" alt="">
-                        <span>${match.away}</span>
-                    </div>
-                `;
-                container.appendChild(div);
-            });
-        }
-*/
         function changeMatchday() { renderMatches(); }
 
         async function updateTournament() {
@@ -1218,7 +1167,7 @@ V3.1<!DOCTYPE html>
 
             recalculateStandings();
             renderStandings();
-            alert("Nəticələr yeniləndi!");
+            showToast("Nəticələr yeniləndi!", "success");
             switchTab('standings', document.querySelectorAll('.tab-btn')[0]);
 
             if (db) {
@@ -1329,38 +1278,6 @@ V3.1<!DOCTYPE html>
             });
         }
 
-        /*function openTeamModal(teamName) {
-            document.getElementById('modal-team-title').textContent = `${teamName} - All Matches`;
-            const container = document.getElementById('modal-matches-list');
-            container.innerHTML = '';
-
-            schedule.forEach((round, roundIdx) => {
-                round.forEach(match => {
-                    if (match.home === teamName || match.away === teamName) {
-                        let ghVal = (match.gh !== null && match.gh !== undefined && match.gh !== "null") ? match.gh.toString().trim() : "";
-                        let gaVal = (match.ga !== null && match.ga !== undefined && match.ga !== "null") ? match.ga.toString().trim() : "";
-                        let scoreText = (ghVal !== "" && gaVal !== "") ? `${ghVal} - ${gaVal}` : "vs";
-
-                        let div = document.createElement('div');
-                        div.className = 'team-match-row';
-                        div.innerHTML = `
-                            <span style="color:var(--text-muted); font-weight:700;">GW ${roundIdx + 1}</span>
-                            <div style="display:flex; align-items:center; gap:4px; flex:1; justify-content:flex-end; ${match.home === teamName ? 'font-weight:900; color:var(--pl-green);' : ''}">
-                                <span>${match.home}</span>
-                                <img src="${getTeamLogo(match.home)}" style="width:16px; height:16px;" alt="">
-                            </div>
-                            <span class="match-score-badge" style="margin: 0 6px;">${scoreText}</span>
-                            <div style="display:flex; align-items:center; gap:4px; flex:1; justify-content:flex-start; ${match.away === teamName ? 'font-weight:900; color:var(--pl-green);' : ''}">
-                                <img src="${getTeamLogo(match.away)}" style="width:16px; height:16px;" alt="">
-                                <span>${match.away}</span>
-                            </div>
-                        `;
-                        container.appendChild(div);
-                    }
-                });
-            });
-            document.getElementById('team-modal').style.display = 'flex';
-        }*/
         function openTeamModal(teamName) {
             document.getElementById('modal-team-title').textContent = `${teamName} - All Matches`;
             const container = document.getElementById('modal-matches-list');
@@ -1394,7 +1311,6 @@ V3.1<!DOCTYPE html>
             document.getElementById('team-modal').style.display = 'flex';
         }
 
-
         function closeTeamModal() { document.getElementById('team-modal').style.display = 'none'; }
 
         function renderScorers() {
@@ -1406,6 +1322,11 @@ V3.1<!DOCTYPE html>
                     teamSelect.innerHTML += `<option value="${team.name}">${team.name}</option>`;
                 });
                 if (currentVal && teams.some(t => t.name === currentVal)) teamSelect.value = currentVal;
+                
+                const teamLabel = document.getElementById('scorer-tab-team-select-label');
+                if (teamLabel && teamSelect.options.length > 0) {
+                    teamLabel.textContent = teamSelect.options[teamSelect.selectedIndex]?.text || "Select Team";
+                }
             }
 
             const filterSelect = document.getElementById('scorers-filter-select');
@@ -1417,6 +1338,11 @@ V3.1<!DOCTYPE html>
                 });
                 if (currentFilter && (currentFilter === 'ALL' || teams.some(t => t.name === currentFilter))) {
                     filterSelect.value = currentFilter;
+                }
+
+                const filterLabel = document.getElementById('scorers-filter-select-label');
+                if (filterLabel && filterSelect.options.length > 0) {
+                    filterLabel.textContent = filterSelect.options[filterSelect.selectedIndex]?.text || "All Teams";
                 }
             }
 
@@ -1442,110 +1368,66 @@ V3.1<!DOCTYPE html>
             });
         }
 
-       /* async function addPlayerFromScorersTab() {
+        async function updateScorers() {
+            const inputs = document.querySelectorAll('.scorer-input');
+            let updates = [];
+            
+            inputs.forEach(input => {
+                let idx = input.getAttribute('data-index');
+                let goals = parseInt(input.value) || 0;
+                if (scorers[idx]) {
+                    scorers[idx].goals = goals;
+                    updates.push(scorers[idx]);
+                }
+            });
+
+            scorers.sort((a, b) => b.goals - a.goals);
+            renderScorers();
+
+            if (db) {
+                try {
+                    const updatePromises = updates.map(player => 
+                        db.from('scorers')
+                          .update({ goals: player.goals })
+                          .eq('name', player.name)
+                          .eq('team', player.team)
+                    );
+
+                    await Promise.all(updatePromises);
+                    showToast("Goals updated successfully!", "success");
+                } catch (err) {
+                    console.warn("Xəta baş verdi:", err);
+                    showToast("Failed to update goals!", "error");
+                }
+            } else {
+                showToast("Scorers updated!", "success");
+            }
+        }
+
+        async function addPlayerFromScorersTab() {
             let name = document.getElementById('scorer-tab-player-name').value.trim();
             let team = document.getElementById('scorer-tab-team-select').value;
             let goals = parseInt(document.getElementById('scorer-tab-player-goals').value) || 0;
 
-            if (!name) return alert("Please enter player name!");
+            if (!name) return showToast("Please enter player name!", "error");
 
             if (db) {
                 let { data, error } = await db.from('scorers').insert([{ name, team, goals }]).select();
-                if (!error && data) scorers.push(data[0]);
+                
+                if (error) {
+                    console.warn("Supabase insert error:", error);
+                    scorers.push({ name, team, goals });
+                } else if (data && data.length > 0) {
+                    scorers.push(data[0]);
+                }
             } else {
                 scorers.push({ id: Date.now(), name, team, goals });
             }
 
             renderScorers();
             document.getElementById('scorer-tab-player-name').value = '';
-            alert("Player added!");
-        } */
-
-                       async function updateScorers() {
-    const inputs = document.querySelectorAll('.scorer-input');
-    let updates = [];
-    
-    inputs.forEach(input => {
-        let idx = input.getAttribute('data-index');
-        let goals = parseInt(input.value) || 0;
-        if (scorers[idx]) {
-            scorers[idx].goals = goals;
-            updates.push(scorers[idx]);
+            showToast("Player added successfully!", "success");
         }
-    });
-
-    scorers.sort((a, b) => b.goals - a.goals);
-    renderScorers();
-
-    if (db) {
-        try {
-            // Bütün oyunçuların güncəlləmə sorğularını tək-tək gözləmədən, 
-            // eyni anda paralel şəkildə Supabase-ə göndəririk:
-            const updatePromises = updates.map(player => 
-                db.from('scorers')
-                  .update({ goals: player.goals })
-                  .eq('name', player.name)
-                  .eq('team', player.team)
-            );
-
-            await Promise.all(updatePromises);
-            alert("Qollar Supabase bazasında dərhal yeniləndi!");
-        } catch (err) {
-            console.warn("Xəta baş verdi:", err);
-        }
-    } else {
-        alert("Scorers updated!");
-    }
-}
-
-async function addPlayerFromScorersTab() {
-    let name = document.getElementById('scorer-tab-player-name').value.trim();
-    let team = document.getElementById('scorer-tab-team-select').value;
-    let goals = parseInt(document.getElementById('scorer-tab-player-goals').value) || 0;
-
-    if (!name) return alert("Please enter player name!");
-
-    if (db) {
-        // .select() əlavə edirik ki, Supabase bazanın avtomatik yaratdığı ID-ni bizə qaytarsın
-        let { data, error } = await db.from('scorers').insert([{ name, team, goals }]).select();
-        
-        if (error) {
-            console.warn("Supabase insert error:", error);
-            scorers.push({ name, team, goals }); // Xəta olarsa yenə də lokal əlavə edirik
-        } else if (data && data.length > 0) {
-            // Bazadan qayıdan ID-li obyekti dərhal əlavə edirik
-            scorers.push(data[0]);
-        }
-    } else {
-        scorers.push({ id: Date.now(), name, team, goals });
-    }
-
-    renderScorers();
-    document.getElementById('scorer-tab-player-name').value = '';
-    alert("Player added!");
-}
-
-                /* async function addPlayerFromScorersTab() {
-            let name = document.getElementById('scorer-tab-player-name').value.trim();
-            let team = document.getElementById('scorer-tab-team-select').value;
-            let goals = parseInt(document.getElementById('scorer-tab-player-goals').value) || 0;
-
-            if (!name) return alert("Please enter player name!");
-
-            // Əvvəlcə lokal siyahıya əlavə edirik ki, dərhal ekranda görünsün
-            scorers.push({ name, team, goals });
-
-            if (db) {
-                let { error } = await db.from('scorers').insert([{ name, team, goals }]);
-                if (error) {
-                    console.warn("Supabase insert error:", error);
-                }
-            }
-
-            renderScorers();
-            document.getElementById('scorer-tab-player-name').value = '';
-            alert("Player added!");
-        }*/
 
         async function removePlayerFromPool(idx) {
             let player = scorers[idx];
@@ -1558,6 +1440,7 @@ async function addPlayerFromScorersTab() {
             }
             scorers.splice(idx, 1);
             renderAdminPool();
+            showToast("Player deleted!", "success");
         }
 
         function renderAdmin() {
@@ -1575,41 +1458,45 @@ async function addPlayerFromScorersTab() {
                     select.innerHTML += `<option value="${team.name}">${team.name}</option>`;
                 });
                 if (currentVal && teams.some(t => t.name === currentVal)) select.value = currentVal;
+
+                const adminTeamLabel = document.getElementById('admin-filter-team-select-label');
+                if (adminTeamLabel && select.options.length > 0) {
+                    adminTeamLabel.textContent = select.options[select.selectedIndex]?.text || "Select Team";
+                }
             }
 
             renderAdminPool();
             initAdminMatchdaySelect();
             renderAdminMatches();
         }
-function renderAdminPool() {
-    const select = document.getElementById('admin-filter-team-select');
-    const poolBody = document.getElementById('admin-pool-body');
-    if (!select || !poolBody) return;
 
-    let selectedTeam = select.value || (teams[0] ? teams[0].name : "");
-    poolBody.innerHTML = '';
+        function renderAdminPool() {
+            const select = document.getElementById('admin-filter-team-select');
+            const poolBody = document.getElementById('admin-pool-body');
+            if (!select || !poolBody) return;
 
-    let filteredPlayers = scorers.filter(p => p.team === selectedTeam);
+            let selectedTeam = select.value || (teams[0] ? teams[0].name : "");
+            poolBody.innerHTML = '';
 
-    filteredPlayers.forEach((player) => {
-        let globalIdx = scorers.findIndex(p => p.name === player.name && p.team === player.team);
-        
-        poolBody.innerHTML += `
-            <tr>
-                <td style="text-align:left; font-weight:700;">${player.name} <span style="color:var(--text-muted); font-size:9px;">(Goals: ${player.goals})</span></td>
-                <td style="text-align:right;">
-                    <button class="edit-btn" onclick="editPlayerPrompt(${globalIdx})" style="margin-right: 4px;">Edit</button>
-                    <button class="danger-btn" onclick="removePlayerFromPool(${globalIdx})">Delete</button>
-                </td>
-            </tr>
-        `;
-    });
-}
+            let filteredPlayers = scorers.filter(p => p.team === selectedTeam);
 
-
+            filteredPlayers.forEach((player) => {
+                let globalIdx = scorers.findIndex(p => p.name === player.name && p.team === player.team);
+                
+                poolBody.innerHTML += `
+                    <tr>
+                        <td style="text-align:left; font-weight:700;">${player.name} <span style="color:var(--text-muted); font-size:9px;">(Goals: ${player.goals})</span></td>
+                        <td style="text-align:right;">
+                            <button class="edit-btn" onclick="editPlayerPrompt(${globalIdx})" style="margin-right: 4px;">Edit</button>
+                            <button class="danger-btn" onclick="removePlayerFromPool(${globalIdx})">Delete</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
 function editPlayerPrompt(idx) {
     let player = scorers[idx];
-    if (!player) return alert("Oyunçu tapılmadı!");
+    if (!player) return showToast("Oyunçu tapılmadı!", "error");
 
     let existingModal = document.getElementById('custom-edit-modal');
     if (existingModal) existingModal.remove();
@@ -1644,7 +1531,8 @@ function editPlayerPrompt(idx) {
                 
                 <div style="margin-bottom: 16px;">
                     <label style="display: block; font-size: 10px; color: var(--text-muted, #bdaccd); margin-bottom: 4px; font-weight: 800; text-transform: uppercase;">Team</label>
-                    <select id="modal-edit-team" style="width: 100%;">
+                    <!-- Modal daxilində rahat görünən xüsusi bənövşəyi/yaşıl select -->
+                    <select id="modal-edit-team" style="width: 100%; background-color: #21002b; color: #ffffff; border: 1px solid #48115c; border-radius: 8px; padding: 8px; font-size: 12px; font-weight: 700; outline: none; cursor: pointer;">
                         ${teamOptions}
                     </select>
                 </div>
@@ -1659,7 +1547,6 @@ function editPlayerPrompt(idx) {
     `;
 
     document.body.appendChild(modal);
-
     document.getElementById('modal-edit-name').focus();
 
     const closeModal = () => modal.remove();
@@ -1675,7 +1562,7 @@ function editPlayerPrompt(idx) {
         let newTeam = document.getElementById('modal-edit-team').value;
 
         if (!newName) {
-            alert("Please enter player name!");
+            showToast("Please enter player name!", "error");
             return;
         }
 
@@ -1684,58 +1571,112 @@ function editPlayerPrompt(idx) {
     };
 }
 
+      /*  function editPlayerPrompt(idx) {
+            let player = scorers[idx];
+            if (!player) return showToast("Oyunçu tapılmadı!", "error");
 
+            let existingModal = document.getElementById('custom-edit-modal');
+            if (existingModal) existingModal.remove();
 
-async function updatePlayerInPool(idx, newName, newTeam) {
-    let oldPlayer = scorers[idx];
-    if (!oldPlayer) return;
+            let teamOptions = teams.map(t => {
+                let teamName = typeof t === 'string' ? t : (t.name || t);
+                let selected = teamName === player.team ? 'selected' : '';
+                return `<option value="${teamName}" ${selected}>${teamName}</option>`;
+            }).join('');
 
-    let oldName = oldPlayer.name;
-    let oldTeam = oldPlayer.team;
+            let modal = document.createElement('div');
+            modal.id = 'custom-edit-modal';
+            modal.style.cssText = `
+                position: fixed; inset: 0; background: rgba(15, 0, 23, 0.85);
+                display: flex; align-items: center; justify-content: center;
+                z-index: 9999; backdrop-filter: blur(8px); padding: 12px;
+            `;
 
-    // Lokal massivi yeniləyirik
-    scorers[idx].name = newName;
-    scorers[idx].team = newTeam;
+            modal.innerHTML = `
+                <div style="background: var(--pl-card-solid, #2d0033); border: 1px solid var(--border, rgba(255, 255, 255, 0.12)); border-radius: 14px; width: 100%; max-width: 320px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); overflow: hidden; font-family: 'Plus Jakarta Sans', sans-serif;">
+                    
+                    <div style="padding: 10px 14px; background: rgba(0,0,0,0.3); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border, rgba(255, 255, 255, 0.12));">
+                        <h3 style="margin: 0; font-size: 13px; color: var(--pl-green, #00ff87); font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;"><i class="fa-solid fa-user-pen"></i> Edit Player</h3>
+                        <button type="button" id="modal-close-icon" style="background: none; border: none; color: var(--text-muted, #bdaccd); font-size: 16px; cursor: pointer;"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    
+                    <div style="padding: 14px 16px;">
+                        <div style="margin-bottom: 12px;">
+                            <label style="display: block; font-size: 10px; color: var(--text-muted, #bdaccd); margin-bottom: 4px; font-weight: 800; text-transform: uppercase;">Player Name</label>
+                            <input type="text" id="modal-edit-name" value="${player.name}" style="width: 100%; padding: 8px 10px; background: rgba(0,0,0,0.3); border: 1px solid var(--border, rgba(255, 255, 255, 0.12)); border-radius: 8px; color: var(--text-main, #ffffff); font-size: 12px; outline: none; font-weight: 700;">
+                        </div>
+                        
+                        <div style="margin-bottom: 16px;">
+                            <label style="display: block; font-size: 10px; color: var(--text-muted, #bdaccd); margin-bottom: 4px; font-weight: 800; text-transform: uppercase;">Team</label>
+                            <select id="modal-edit-team" style="display: none;">
+                                ${teamOptions}
+                            </select>
+                            <button type="button" id="modal-edit-team-btn" class="custom-select-btn" onclick="openCustomDropdown('modal-edit-team', 'Select Team')">
+                                <span id="modal-edit-team-label">${player.team}</span>
+                                <i class="fa-solid fa-chevron-down" style="color: var(--pl-green); font-size: 10px;"></i>
+                            </button>
+                        </div>
+                        
+                        <div style="display: flex; gap: 6px;">
+                            <button type="button" id="modal-cancel-btn" style="flex: 1; padding: 8px; border-radius: 6px; font-weight: 800; font-size: 11px; cursor: pointer; border: none; background: rgba(255,255,255,0.08); color: var(--text-muted, #bdaccd); text-transform: uppercase;">Cancel</button>
+                            <button type="button" id="modal-save-btn" style="flex: 1; padding: 8px; border-radius: 6px; font-weight: 800; font-size: 11px; cursor: pointer; border: none; background: linear-gradient(135deg, var(--pl-green, #00ff87) 0%, var(--pl-cyan, #00d7ff) 100%); color: #1c0028; text-transform: uppercase; box-shadow: 0 4px 12px rgba(0, 255, 135, 0.2);">Save</button>
+                        </div>
+                    </div>
+                </div>
+            `;
 
-    // Supabase-də köhnə ad və komandaya əsasən yeniləyirik
-    if (db) {
-        let { error } = await db.from('scorers')
-            .update({ name: newName, team: newTeam })
-            .eq('name', oldName)
-            .eq('team', oldTeam);
+            document.body.appendChild(modal);
+            document.getElementById('modal-edit-name').focus();
 
-        if (error) {
-            console.warn("Supabase update error:", error);
-            alert("Yenilənmə xətası: " + error.message);
-            return;
+            const closeModal = () => modal.remove();
+            document.getElementById('modal-cancel-btn').onclick = closeModal;
+            document.getElementById('modal-close-icon').onclick = closeModal;
+            
+            modal.onclick = (e) => {
+                if (e.target === modal) closeModal();
+            };
+
+            document.getElementById('modal-save-btn').onclick = () => {
+                let newName = document.getElementById('modal-edit-name').value.trim();
+                let newTeam = document.getElementById('modal-edit-team').value;
+
+                if (!newName) {
+                    showToast("Please enter player name!", "error");
+                    return;
+                }
+
+                modal.remove();
+                updatePlayerInPool(idx, newName, newTeam);
+            };
         }
-    }
+*/
+        async function updatePlayerInPool(idx, newName, newTeam) {
+            let oldPlayer = scorers[idx];
+            if (!oldPlayer) return;
 
-    renderAdminPool();
-    renderScorers();
-    alert("Oyunçu uğurla yeniləndi!");
-}
+            let oldName = oldPlayer.name;
+            let oldTeam = oldPlayer.team;
 
-        /*function renderAdminPool() {
-            const select = document.getElementById('admin-filter-team-select');
-            const poolBody = document.getElementById('admin-pool-body');
-            if (!select || !poolBody) return;
+            scorers[idx].name = newName;
+            scorers[idx].team = newTeam;
 
-            let selectedTeam = select.value || (teams[0] ? teams[0].name : "");
-            poolBody.innerHTML = '';
+            if (db) {
+                let { error } = await db.from('scorers')
+                    .update({ name: newName, team: newTeam })
+                    .eq('name', oldName)
+                    .eq('team', oldTeam);
 
-            let filteredPlayers = scorers.filter(p => p.team === selectedTeam);
+                if (error) {
+                    console.warn("Supabase update error:", error);
+                    showToast("Yenilənmə xətası: " + error.message, "error");
+                    return;
+                }
+            }
 
-            filteredPlayers.forEach((player) => {
-                let globalIdx = scorers.findIndex(p => p === player);
-                poolBody.innerHTML += `
-                    <tr>
-                        <td style="text-align:left; font-weight:700;">${player.name} <span style="color:var(--text-muted); font-size:9px;">(Goals: ${player.goals})</span></td>
-                        <td style="text-align:right;"><button class="danger-btn" onclick="removePlayerFromPool(${globalIdx})">Delete</button></td>
-                    </tr>
-                `;
-            });
-        }*/
+            renderAdminPool();
+            renderScorers();
+            showToast("Player successfully updated!", "success");
+        }
 
         async function addPlayerToPool() {
             let select = document.getElementById('admin-filter-team-select');
@@ -1743,7 +1684,7 @@ async function updatePlayerInPool(idx, newName, newTeam) {
             let team = select.value;
             let name = nameInput.value.trim();
 
-            if (!name) return alert("Please enter player name!");
+            if (!name) return showToast("Please enter player name!", "error");
 
             if (db) {
                 let { data, error } = await db.from('scorers').insert([{ name, team, goals: 0 }]).select();
@@ -1754,20 +1695,14 @@ async function updatePlayerInPool(idx, newName, newTeam) {
 
             nameInput.value = '';
             renderAdminPool();
-            alert(`Player added to ${team}!`);
+            showToast(`Player added to ${team}!`, "success");
         }
-
-        /*async function removePlayerFromPool(idx) {
-            let player = scorers[idx];
-            if (db && player && player.id) await db.from('scorers').delete().eq('id', player.id);
-            scorers.splice(idx, 1);
-            renderAdminPool();
-        }*/
 
         async function removeTeam(id) {
             if (db) await db.from('teams').delete().eq('id', id);
             teams = teams.filter(t => t.id !== id);
             renderAdmin();
+            showToast("Club deleted!", "success");
         }
 
         function initAdminMatchdaySelect() {
@@ -1780,38 +1715,43 @@ async function updatePlayerInPool(idx, newName, newTeam) {
                 opt.textContent = `Gameweek ${i + 1}`;
                 select.appendChild(opt);
             }
+            const labelBtn = document.getElementById('admin-matchday-select-label');
+            if (labelBtn && select.options.length > 0) {
+                labelBtn.textContent = select.options[select.selectedIndex]?.text || "Gameweek 1";
+            }
         }
 
         function renderAdminMatches() {
-            const select = document.getElementById('admin-matchday-select');
-            if (!select) return;
-            const roundIndex = parseInt(select.value) || 0;
-            const container = document.getElementById('admin-matches-container');
-            container.innerHTML = '';
+    const select = document.getElementById('admin-matchday-select');
+    if (!select) return;
+    const roundIndex = parseInt(select.value) || 0;
+    const container = document.getElementById('admin-matches-container');
+    container.innerHTML = '';
 
-            if (!schedule[roundIndex]) return;
-            schedule[roundIndex].forEach((match, matchIndex) => {
-                let ghVal = (match.gh !== null && match.gh !== undefined && match.gh !== "null") ? match.gh : "";
-                let gaVal = (match.ga !== null && match.ga !== undefined && match.ga !== "null") ? match.ga : "";
+    if (!schedule[roundIndex]) return;
+    schedule[roundIndex].forEach((match, matchIndex) => {
+        let ghVal = (match.gh !== null && match.gh !== undefined && match.gh !== "null") ? match.gh : "";
+        let gaVal = (match.ga !== null && match.ga !== undefined && match.ga !== "null") ? match.ga : "";
 
-                const div = document.createElement('div');
-                div.className = 'team-match-row';
-                div.innerHTML = `
-                    <span style="font-size: 10px; font-weight: 700; width: 60px; overflow:hidden;">${match.home}</span>
-                    <div style="display:flex; align-items:center; gap:2px;">
-                        <input type="number" min="0" value="${ghVal}" style="width:26px; height:22px; text-align:center; background:rgba(0,0,0,0.4); border:1px solid var(--border); color:var(--pl-green); border-radius:4px; font-weight:800; outline:none; font-size:11px;" data-round="${roundIndex}" data-match="${matchIndex}" data-type="gh">
-                        <span style="color:var(--text-muted); font-size:10px;">-</span>
-                        <input type="number" min="0" value="${gaVal}" style="width:26px; height:22px; text-align:center; background:rgba(0,0,0,0.4); border:1px solid var(--border); color:var(--pl-green); border-radius:4px; font-weight:800; outline:none; font-size:11px;" data-round="${roundIndex}" data-match="${matchIndex}" data-type="ga">
-                    </div>
-                    <span style="font-size: 10px; font-weight: 700; width: 60px; text-align:right; overflow:hidden;">${match.away}</span>
-                    <div style="display:flex; gap:2px;">
-                        <button type="button" onclick="simulateSingleMatchAI(${roundIndex}, ${matchIndex})" style="background:linear-gradient(135deg, #00ff87 0%, #00d7ff 100%); color:#1c0028; border:none; border-radius:4px; padding:2px 5px; font-weight:800; font-size:9px; cursor:pointer;" title="AI Simulate">🤖 AI</button>
-                        <button type="button" onclick="clearSingleMatchResult(${roundIndex}, ${matchIndex})" style="background:var(--pl-pink); color:#fff; border:none; border-radius:4px; padding:2px 4px; font-weight:800; font-size:9px; cursor:pointer;" title="Clear">🗑️</button>
-                    </div>
-                `;
-                container.appendChild(div);
-            });
-        }
+        const div = document.createElement('div');
+        div.className = 'team-match-row';
+        div.innerHTML = `
+            <span style="font-size: 10px; font-weight: 700; flex: 1; text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${match.home}</span>
+            <div style="display:flex; align-items:center; gap:2px; flex-shrink: 0; margin: 0 4px;">
+                <input type="number" min="0" value="${ghVal}" style="width:26px; height:22px; text-align:center; background:rgba(0,0,0,0.4); border:1px solid var(--border); color:var(--pl-green); border-radius:4px; font-weight:800; outline:none; font-size:11px;" data-round="${roundIndex}" data-match="${matchIndex}" data-type="gh">
+                <span style="color:var(--text-muted); font-size:10px;">-</span>
+                <input type="number" min="0" value="${gaVal}" style="width:26px; height:22px; text-align:center; background:rgba(0,0,0,0.4); border:1px solid var(--border); color:var(--pl-green); border-radius:4px; font-weight:800; outline:none; font-size:11px;" data-round="${roundIndex}" data-match="${matchIndex}" data-type="ga">
+            </div>
+            <span style="font-size: 10px; font-weight: 700; flex: 1; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${match.away}</span>
+            <div style="display:flex; gap:2px; flex-shrink: 0; margin-left: 4px;">
+                <button type="button" onclick="simulateSingleMatchAI(${roundIndex}, ${matchIndex})" style="background:linear-gradient(135deg, #00ff87 0%, #00d7ff 100%); color:#1c0028; border:none; border-radius:4px; padding:2px 5px; font-weight:800; font-size:9px; cursor:pointer;" title="AI Simulate">🤖 AI</button>
+                <button type="button" onclick="clearSingleMatchResult(${roundIndex}, ${matchIndex})" style="background:var(--pl-pink); color:#fff; border:none; border-radius:4px; padding:2px 4px; font-weight:800; font-size:9px; cursor:pointer;" title="Clear">🗑️</button>
+            </div>
+        `;
+        container.appendChild(div);
+    });
+}
+
 
         async function clearSingleMatchResult(roundIndex, matchIndex) {
             if (schedule[roundIndex] && schedule[roundIndex][matchIndex]) {
@@ -1820,6 +1760,7 @@ async function updatePlayerInPool(idx, newName, newTeam) {
                 match.ga = "";
                 recalculateStandings();
                 renderAdminMatches();
+                showToast("Match result cleared!", "success");
                 if (db && match.id) {
                     await db.from('schedule').update({ gh: "", ga: "" }).eq('id', match.id);
                 }
@@ -1839,7 +1780,7 @@ async function updatePlayerInPool(idx, newName, newTeam) {
                     });
                     recalculateStandings();
                     renderAdminMatches();
-                    alert(`Gameweek ${roundIndex + 1} təmizləndi!`);
+                    showToast(`Gameweek ${roundIndex + 1} cleared!`, "success");
 
                     if (db) {
                         Promise.all(schedule[roundIndex].map(match => {
@@ -1862,7 +1803,7 @@ async function updatePlayerInPool(idx, newName, newTeam) {
                 });
                 recalculateStandings();
                 renderAdminMatches();
-                alert("Bütün nəticələr sıfırlandı!");
+                showToast("All season results reset!", "success");
 
                 if (db) {
                     db.from('schedule').update({ gh: "", ga: "" }).neq('id', 0)
@@ -1926,7 +1867,7 @@ async function updatePlayerInPool(idx, newName, newTeam) {
 
             renderAdminMatches();
             recalculateStandings();
-            alert(`🤖 AI Match Result:\n${match.home} ${res.gh} - ${res.ga} ${match.away}`);
+            showToast(`🤖 AI Match Result: ${match.home} ${res.gh} - ${res.ga} ${match.away}`, "success");
 
             if (db && match.id) {
                 db.from('schedule').update({ gh: match.gh, ga: match.ga }).eq('id', match.id)
@@ -1950,7 +1891,7 @@ async function updatePlayerInPool(idx, newName, newTeam) {
 
             renderAdminMatches();
             recalculateStandings();
-            alert(`AI Gameweek ${roundIndex + 1} üçün simulyasiya etdi!`);
+            showToast(`AI Simulation completed for GW ${roundIndex + 1}!`, "success");
 
             if (db) {
                 Promise.all(schedule[roundIndex].map(match => {
@@ -1976,7 +1917,7 @@ async function updatePlayerInPool(idx, newName, newTeam) {
             });
 
             recalculateStandings();
-            alert("Nəticələr yadda saxlanıldı!");
+            showToast("Match results saved successfully!", "success");
 
             if (db) {
                 Promise.all(updates.map(match => {
@@ -2000,7 +1941,7 @@ async function updatePlayerInPool(idx, newName, newTeam) {
             }
 
             renderAdmin();
-            alert("Club added!");
+            showToast("New club added successfully!", "success");
         }
 
         let savedAdminBtn = null;
@@ -2019,8 +1960,41 @@ async function updatePlayerInPool(idx, newName, newTeam) {
                 closeAdminPasswordModal();
                 switchTab('admin', savedAdminBtn);
             } else {
-                alert("Incorrect password!");
+                showToast("Incorrect passcode!", "error");
             }
+        }
+
+        function showToast(message, type = 'success') {
+            let existingToast = document.getElementById('custom-toast');
+            if (existingToast) existingToast.remove();
+
+            let isSuccess = type === 'success';
+            let icon = isSuccess ? 'fa-circle-check' : 'fa-circle-exclamation';
+            let iconColor = isSuccess ? 'var(--pl-green)' : 'var(--pl-pink)';
+
+            let toast = document.createElement('div');
+            toast.id = 'custom-toast';
+            toast.style.cssText = `
+                position: fixed; bottom: 20px; right: 20px; z-index: 10000;
+                background: var(--pl-card-solid); border: 1px solid var(--border);
+                border-left: 4px solid ${iconColor}; border-radius: 10px;
+                padding: 12px 16px; display: flex; align-items: center; gap: 10px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); color: var(--text-main);
+                font-family: 'Plus Jakarta Sans', sans-serif; font-size: 12px; font-weight: 700;
+                backdrop-filter: blur(8px); animation: slideIn 0.3s ease;
+            `;
+
+            toast.innerHTML = `
+                <i class="fa-solid ${icon}" style="color: ${iconColor}; font-size: 16px;"></i>
+                <span>${message}</span>
+            `;
+
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.animation = 'fadeOut 0.3s ease forwards';
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
         }
 
         window.addEventListener('load', async () => {
