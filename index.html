@@ -1,4 +1,4 @@
-V1<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@ V1<!DOCTYPE html>
 
     <style>
         :root {
-            --pl-bg: #1c0028;
+            --pl-bg: #2b003a;
             --pl-card: rgba(55, 0, 60, 0.7);
             --pl-card-solid: #2d0033;
             --pl-card-hover: rgba(75, 8, 82, 0.8);
@@ -33,7 +33,7 @@ V1<!DOCTYPE html>
         }
         
         body { 
-            background: radial-gradient(circle at top right, #380040, #1c0028, #0f0017); 
+            background: radial-gradient(circle at top right, #380040, #2b003a, #150020); 
             color: var(--text-main); 
             margin: 0; 
             padding: 12px 8px; 
@@ -68,12 +68,14 @@ V1<!DOCTYPE html>
             font-size: 16px; 
         }
 
-        .app-logo i {
-            background: linear-gradient(135deg, var(--pl-green), var(--pl-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 20px;
-        }
+        .pl-header-logo {
+    height: 32px;
+    max-width: 100%;
+    object-fit: contain;
+    mix-blend-mode: screen; /* Şəklin tünd fonunu yox edib tətbiqin fonuna uyğunlaşdırır */
+    background: transparent;
+}
+
 
         /* NAV TABS */
         .nav-tabs { 
@@ -202,7 +204,7 @@ V1<!DOCTYPE html>
             box-shadow: var(--shadow);
         }
 
-        /* YIĞCAM FIXTURES (TUR OYUNLARI) DİZAYNI */
+        /* YIĞCAM FIXTURES DİZAYNI */
         .matchday-header { 
             display: flex; 
             justify-content: space-between; 
@@ -257,7 +259,8 @@ V1<!DOCTYPE html>
             display: flex; 
             align-items: center; 
             gap: 2px; 
-            background: rgba(0,0,0,0.4); 
+            background: #21002b; /* Və ya sadəcə yellow */
+ 
             padding: 2px 4px; 
             border-radius: 6px; 
             border: 1px solid var(--border); 
@@ -443,49 +446,160 @@ V1<!DOCTYPE html>
 
         .btn-cancel { background: rgba(255,255,255,0.08); color: var(--text-muted); }
         .btn-submit { background: linear-gradient(135deg, var(--pl-green) 0%, var(--pl-cyan) 100%); color: #1c0028; }
-
-        #splash-screen { 
-            position: fixed; 
-            top: 0; left: 0; width: 100%; height: 100%; 
-            background: radial-gradient(circle at center, #2b003a, #0f0017); 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            z-index: 9999; 
-            transition: opacity 0.5s ease; 
+.season-badge-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.1;
+            padding: 2px 6px;
         }
 
-        .loader-spinner { 
-            width: 36px; 
-            height: 36px; 
-            border: 3px solid rgba(255, 255, 255, 0.1); 
-            border-top: 3px solid var(--pl-green); 
-            border-radius: 50%; 
-            animation: spinLoader 0.8s linear infinite; 
-            margin-top: 16px; 
+        .season-text {
+            color: var(--text-muted);
+            font-weight: 800;
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
         }
 
-        @keyframes spinLoader { 
-            0% { transform: rotate(0deg); } 
-            100% { transform: rotate(360deg); } 
+        .season-num {
+            color: var(--pl-green);
+            font-weight: 900;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 8px rgba(0, 255, 135, 0.4);
         }
+        /* SPLASH SCREEN */
+      #splash-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--pl-bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        .splash-logo {
+            width: 220px;
+            max-width: 80%;
+            object-fit: contain;
+            background: transparent;
+            
+            animation: pulseLogo 1.5s infinite alternate;
+        }
+        /* Bütün Combobox / Select Menyularının Müasir Dizaynı */
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-color: #21002b !important;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2300ff87%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E") !important;
+            background-repeat: no-repeat !important;
+            background-position: right 10px center !important;
+            background-size: 9px auto !important;
+            color: #ffffff !important;
+            border: 1px solid #48115c !important;
+            border-radius: 10px !important;
+            padding: 6px 28px 6px 12px !important;
+            font-weight: 800 !important;
+            font-size: 11px !important;
+            outline: none !important;
+            cursor: pointer !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+            transition: all 0.2s ease-in-out !important;
+        }
+
+        select:focus {
+            border-color: var(--pl-green) !important;
+            box-shadow: 0 0 10px rgba(0, 255, 135, 0.3) !important;
+        }
+
+        select option {
+            background-color: #1f0028 !important;
+            color: #ffffff !important;
+            padding: 8px !important;
+            font-weight: 700 !important;
+        }
+
+        @keyframes pulseLogo {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            100% { transform: scale(1.05); opacity: 1; }
+        }
+        .loader-spinner {
+            width: 35px;
+            height: 35px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid var(--pl-green);
+            border-radius: 50%;
+            animation: spinLoader 0.8s linear infinite;
+            margin-top: 25px;
+        }
+        @keyframes spinLoader {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+            .custom-dropdown-item {
+            padding: 10px 14px;
+            margin-bottom: 4px;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+        }
+
+        .custom-dropdown-item:hover, .custom-dropdown-item.selected {
+            background: linear-gradient(135deg, var(--pl-card-solid), #4a0054);
+            border-color: var(--pl-green);
+            color: var(--pl-green);
+        }
+
+        .custom-select-btn {
+            background: #21002b !important;
+            color: #ffffff !important;
+            border: 1px solid #48115c !important;
+            border-radius: 10px;
+            padding: 6px 12px;
+            font-size: 11px;
+            font-weight: 800;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+
     </style>
 </head>
 <body>
     <div id="splash-screen">
-        <i class="fa-solid fa-trophy" style="color: var(--pl-green); font-size: 38px; margin-bottom: 8px;"></i>
-        <h2 style="color: var(--text-main); font-weight: 900; margin: 0; font-size: 18px;">Premier League</h2>
+        <img src="file:///storage/emulated/0/Download/pl.jpg" class="splash-logo" alt="Premier League">
         <div class="loader-spinner"></div>
-    </div>
+      </div>
 
-    <div class="container">
+            <!-- HEADER -->
+              <!-- HEADER -->
         <div class="app-header">
             <div class="app-logo">
-                <i class="fa-solid fa-trophy"></i>
-                <span>Premier League</span>
+                <img src="file:///storage/emulated/0/Download/pl.jpg" class="pl-header-logo" alt="Premier League">
+            </div>
+            <div class="season-badge-right">
+                <span class="season-text">SEASON</span>
+                <span class="season-num">27</span>
             </div>
         </div>
+
+
 
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab('standings', this)"><i class="fa-solid fa-list-ol"></i> Standings</button>
@@ -522,10 +636,17 @@ V1<!DOCTYPE html>
         <!-- 2. FIXTURES -->
         <div id="matches-section" class="section">
             <div class="card">
-                <div class="matchday-header">
-                    <span style="font-weight: 800; font-size: 12px; color: var(--pl-green);"><i class="fa-regular fa-clock"></i> Select Gameweek</span>
-                    <select id="matchday-select" onchange="changeMatchday()"></select>
-                </div>
+               <div class="matchday-header">
+    <span style="font-weight: 800; font-size: 12px; color: var(--pl-green);"><i class="fa-regular fa-clock"></i> Select Gameweek</span>
+    
+    <!-- Ağ pəncərənin açılmaması üçün gizli select və xüsusi görünən düymə -->
+    <select id="matchday-select" onchange="changeMatchday()" style="display: none;"></select>
+    <button type="button" id="matchday-select-btn" class="custom-select-btn" onclick="openCustomDropdown('matchday-select', 'Select Gameweek', changeMatchday)">
+        <span id="matchday-select-label">Gameweek 1</span>
+        <i class="fa-solid fa-chevron-down" style="color: var(--pl-green); font-size: 10px;"></i>
+    </button>
+</div>
+
                 <div id="match-list-container" class="match-grid"></div>
                 <button class="primary-btn" onclick="updateTournament()"><i class="fa-solid fa-floppy-disk"></i> Save Results & Update Table</button>
             </div>
@@ -666,6 +787,16 @@ V1<!DOCTYPE html>
             </div>
         </div>
     </div>
+    <!-- CUSTOM DROPDOWN MODAL -->
+    <div id="custom-dropdown-modal" class="modal-overlay">
+        <div class="modal-card" style="max-width: 300px;">
+            <div class="modal-header">
+                <h3 id="custom-dropdown-title">Select Option</h3>
+                <button class="close-modal" onclick="closeCustomDropdown()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="custom-dropdown-options" style="padding: 8px;"></div>
+        </div>
+    </div>
 
     <script>
         const SUPABASE_URL = 'https://vuuegnwfxpioiktiaxkk.supabase.co';
@@ -683,7 +814,7 @@ V1<!DOCTYPE html>
             { name: "Brentford", logo: "https://resources.premierleague.com/premierleague/badges/70/t94.png" },
             { name: "Brighton", logo: "https://resources.premierleague.com/premierleague/badges/70/t36.png" },
             { name: "Chelsea", logo: "https://resources.premierleague.com/premierleague/badges/70/t8.png" },
-            { name: "Coventry City", logo: "https://raw.githubusercontent.com/amilkhudaverdiyev/BarclaysPL.Local/refs/heads/main/a.png" },
+            { name: "Coventry City", logo: "https://raw.githubusercontent.com/amilkhudaverdiyev/BarclaysPL.Local/main/a.png" },
             { name: "Crystal Palace", logo: "https://resources.premierleague.com/premierleague/badges/70/t31.png" },
             { name: "Everton", logo: "https://resources.premierleague.com/premierleague/badges/70/t11.png" },
             { name: "Fulham", logo: "https://resources.premierleague.com/premierleague/badges/70/t54.png" },
@@ -784,12 +915,6 @@ V1<!DOCTYPE html>
                 recalculateStandings();
                 initMatchdaySelect();
                 renderStandings();
-                
-                const splash = document.getElementById('splash-screen');
-                if (splash) {
-                    splash.style.opacity = '0';
-                    setTimeout(() => splash.style.display = 'none', 300);
-                }
             }
         }
 
@@ -841,6 +966,51 @@ V1<!DOCTYPE html>
             if (showAlert) alert("Tam 38 turluq cədvəl bazaya yazıldı!");
             await loadData();
         }
+               let activeSelectTargetId = null;
+        let onSelectCallback = null;
+
+        function openCustomDropdown(selectId, title, onChangeFn) {
+            const selectEl = document.getElementById(selectId);
+            if (!selectEl) return;
+
+            activeSelectTargetId = selectId;
+            onSelectCallback = onChangeFn;
+
+            document.getElementById('custom-dropdown-title').textContent = title || "Select Option";
+            const container = document.getElementById('custom-dropdown-options');
+            container.innerHTML = '';
+
+            Array.from(selectEl.options).forEach(opt => {
+                const item = document.createElement('div');
+                item.className = 'custom-dropdown-item' + (opt.value === selectEl.value ? ' selected' : '');
+                item.innerHTML = `
+                    <span>${opt.textContent}</span>
+                    ${opt.value === selectEl.value ? '<i class="fa-solid fa-check" style="color:var(--pl-green);"></i>' : ''}
+                `;
+                item.onclick = () => {
+                    selectEl.value = opt.value;
+                    
+                    // Görünən düymənin üzərindəki yazını yeniləyirik
+                    const labelBtn = document.getElementById(selectId + '-label');
+                    if (labelBtn) {
+                        labelBtn.textContent = opt.textContent;
+                    }
+
+                    closeCustomDropdown();
+                    if (typeof onChangeFn === 'function') {
+                        onChangeFn();
+                    }
+                };
+                container.appendChild(item);
+            });
+
+            document.getElementById('custom-dropdown-modal').style.display = 'flex';
+        }
+
+        function closeCustomDropdown() {
+            document.getElementById('custom-dropdown-modal').style.display = 'none';
+        }
+
 
         async function fillRemaining38Schedule(existingData) {
             let existingGws = Math.max(...existingData.map(m => m.gameweek));
@@ -902,9 +1072,6 @@ V1<!DOCTYPE html>
             recalculateStandings();
             initMatchdaySelect();
             renderStandings();
-
-            const splash = document.getElementById('splash-screen');
-            if (splash) splash.style.display = 'none';
         }
 
         function generateScheduleLocal() {
@@ -981,7 +1148,6 @@ V1<!DOCTYPE html>
                 select.appendChild(opt);
             }
         }
-
         function renderMatches() {
             const select = document.getElementById('matchday-select');
             if (!select) return;
@@ -997,8 +1163,55 @@ V1<!DOCTYPE html>
             }
 
             schedule[roundIndex].forEach((match, matchIndex) => {
-                let ghVal = (match.gh !== null && match.gh !== undefined) ? match.gh : "";
-                let gaVal = (match.ga !== null && match.ga !== undefined) ? match.ga : "";
+                let ghVal = (match.gh !== null && match.gh !== undefined && match.gh !== "null") ? match.gh : "";
+                let gaVal = (match.ga !== null && match.ga !== undefined && match.ga !== "null") ? match.ga : "";
+
+                // Əgər nəticə əvvəlcədən bazadan yazılaq qeydə alınıbsa - ağ və kilidli (readonly) olur
+                // Əgər hələ boşdursa - yazılarkən yaşıl rəngdə olur
+                let isSaved = (ghVal !== "" && gaVal !== "" && match.id); // Və ya qeydə alınmış statusu
+                
+                // Sadə yoxlama: Əgər dəyər varsa və artıq yadda saxlanılıbsa ağ, yeni yazılarkən yaşıl
+                let inputStyle = (ghVal !== "") ? 'color: #ffffff;' : 'color: var(--pl-green);';
+                let disabledAttr = (ghVal !== "" && gaVal !== "") ? `readonly disabled style="color: #ffffff; opacity: 0.85; cursor: not-allowed;"` : `style="color: var(--pl-green);"`;
+
+                const div = document.createElement('div');
+                div.className = 'match-item';
+                div.innerHTML = `
+                    <div class="match-team home">
+                        <span>${match.home}</span>
+                        <img src="${getTeamLogo(match.home)}" class="team-logo-img" alt="">
+                    </div>
+                    <div class="match-inputs">
+                        <input type="number" min="0" value="${ghVal}" data-round="${roundIndex}" data-match="${matchIndex}" data-type="gh" ${disabledAttr}>
+                        <span style="color:var(--text-muted); font-size:10px;">-</span>
+                        <input type="number" min="0" value="${gaVal}" data-round="${roundIndex}" data-match="${matchIndex}" data-type="ga" ${disabledAttr}>
+                    </div>
+                    <div class="match-team away">
+                        <img src="${getTeamLogo(match.away)}" class="team-logo-img" alt="">
+                        <span>${match.away}</span>
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        /*function renderMatches() {
+            const select = document.getElementById('matchday-select');
+            if (!select) return;
+            if (select.children.length === 0) initMatchdaySelect();
+
+            const roundIndex = parseInt(select.value) || 0;
+            const container = document.getElementById('match-list-container');
+            container.innerHTML = '';
+
+            if (!schedule[roundIndex] || schedule[roundIndex].length === 0) {
+                container.innerHTML = '<p style="text-align:center; color:var(--text-muted); padding:10px;">Bu tur üçün məlumat tapılmadı.</p>';
+                return;
+            }
+
+            schedule[roundIndex].forEach((match, matchIndex) => {
+                let ghVal = (match.gh !== null && match.gh !== undefined && match.gh !== "null") ? match.gh : "";
+                let gaVal = (match.ga !== null && match.ga !== undefined && match.ga !== "null") ? match.ga : "";
 
                 const div = document.createElement('div');
                 div.className = 'match-item';
@@ -1020,7 +1233,7 @@ V1<!DOCTYPE html>
                 container.appendChild(div);
             });
         }
-
+*/
         function changeMatchday() { renderMatches(); }
 
         async function updateTournament() {
@@ -1058,8 +1271,8 @@ V1<!DOCTYPE html>
 
             schedule.forEach((round, rIdx) => {
                 round.forEach(match => {
-                    let gh = match.gh !== "" && match.gh !== null && match.gh !== undefined ? parseInt(match.gh) : NaN;
-                    let ga = match.ga !== "" && match.ga !== null && match.ga !== undefined ? parseInt(match.ga) : NaN;
+                    let gh = match.gh !== "" && match.gh !== null && match.gh !== undefined && match.gh !== "null" ? parseInt(match.gh) : NaN;
+                    let ga = match.ga !== "" && match.ga !== null && match.ga !== undefined && match.ga !== "null" ? parseInt(match.ga) : NaN;
 
                     if (!isNaN(gh) && !isNaN(ga)) {
                         let homeTeam = teams.find(t => t.name === match.home);
@@ -1150,7 +1363,7 @@ V1<!DOCTYPE html>
             });
         }
 
-        function openTeamModal(teamName) {
+        /*function openTeamModal(teamName) {
             document.getElementById('modal-team-title').textContent = `${teamName} - All Matches`;
             const container = document.getElementById('modal-matches-list');
             container.innerHTML = '';
@@ -1158,8 +1371,8 @@ V1<!DOCTYPE html>
             schedule.forEach((round, roundIdx) => {
                 round.forEach(match => {
                     if (match.home === teamName || match.away === teamName) {
-                        let ghVal = (match.gh !== null && match.gh !== undefined) ? match.gh.toString().trim() : "";
-                        let gaVal = (match.ga !== null && match.ga !== undefined) ? match.ga.toString().trim() : "";
+                        let ghVal = (match.gh !== null && match.gh !== undefined && match.gh !== "null") ? match.gh.toString().trim() : "";
+                        let gaVal = (match.ga !== null && match.ga !== undefined && match.ga !== "null") ? match.ga.toString().trim() : "";
                         let scoreText = (ghVal !== "" && gaVal !== "") ? `${ghVal} - ${gaVal}` : "vs";
 
                         let div = document.createElement('div');
@@ -1181,7 +1394,40 @@ V1<!DOCTYPE html>
                 });
             });
             document.getElementById('team-modal').style.display = 'flex';
+        }*/
+        function openTeamModal(teamName) {
+            document.getElementById('modal-team-title').textContent = `${teamName} - All Matches`;
+            const container = document.getElementById('modal-matches-list');
+            container.innerHTML = '';
+
+            schedule.forEach((round, roundIdx) => {
+                round.forEach(match => {
+                    if (match.home === teamName || match.away === teamName) {
+                        let ghVal = (match.gh !== null && match.gh !== undefined && match.gh !== "null") ? match.gh.toString().trim() : "";
+                        let gaVal = (match.ga !== null && match.ga !== undefined && match.ga !== "null") ? match.ga.toString().trim() : "";
+                        let scoreText = (ghVal !== "" && gaVal !== "") ? `${ghVal} - ${gaVal}` : "vs";
+
+                        let div = document.createElement('div');
+                        div.className = 'team-match-row';
+                        div.innerHTML = `
+                            <span style="color:var(--text-muted); font-weight:700; font-size:10px; width:40px; flex-shrink:0;">GW ${roundIdx + 1}</span>
+                            <div style="display:flex; align-items:center; gap:5px; flex:1; justify-content:flex-end; overflow:hidden; text-align:right; ${match.home === teamName ? 'font-weight:900; color:var(--pl-green);' : ''}">
+                                <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:11px;">${match.home}</span>
+                                <img src="${getTeamLogo(match.home)}" style="width:16px; height:16px; flex-shrink:0;" alt="">
+                            </div>
+                            <span class="match-score-badge" style="margin: 0 6px; flex-shrink:0;">${scoreText}</span>
+                            <div style="display:flex; align-items:center; gap:5px; flex:1; justify-content:flex-start; overflow:hidden; text-align:left; ${match.away === teamName ? 'font-weight:900; color:var(--pl-green);' : ''}">
+                                <img src="${getTeamLogo(match.away)}" style="width:16px; height:16px; flex-shrink:0;" alt="">
+                                <span style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis; font-size:11px;">${match.away}</span>
+                            </div>
+                        `;
+                        container.appendChild(div);
+                    }
+                });
+            });
+            document.getElementById('team-modal').style.display = 'flex';
         }
+
 
         function closeTeamModal() { document.getElementById('team-modal').style.display = 'none'; }
 
@@ -1372,8 +1618,8 @@ V1<!DOCTYPE html>
 
             if (!schedule[roundIndex]) return;
             schedule[roundIndex].forEach((match, matchIndex) => {
-                let ghVal = (match.gh !== null && match.gh !== undefined) ? match.gh : "";
-                let gaVal = (match.ga !== null && match.ga !== undefined) ? match.ga : "";
+                let ghVal = (match.gh !== null && match.gh !== undefined && match.gh !== "null") ? match.gh : "";
+                let gaVal = (match.ga !== null && match.ga !== undefined && match.ga !== "null") ? match.ga : "";
 
                 const div = document.createElement('div');
                 div.className = 'team-match-row';
@@ -1604,7 +1850,18 @@ V1<!DOCTYPE html>
             }
         }
 
-        window.addEventListener('load', loadData);
+        window.addEventListener('load', async () => {
+            await loadData();
+            setTimeout(() => {
+                const splash = document.getElementById('splash-screen');
+                if (splash) {
+                    splash.style.opacity = '0';
+                    setTimeout(() => {
+                        splash.style.display = 'none';
+                    }, 300);
+                }
+            }, 3000);
+        });
     </script>
 </body>
 </html>
